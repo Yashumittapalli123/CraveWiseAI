@@ -38,7 +38,7 @@ export const CravingTwin: React.FC<CravingTwinProps> = ({ onNavigate }) => {
           image_url: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600&q=80'
         },
         healthy_twin: {
-          name: `Air-Fried Protein ${foodText.title ? foodText.title() : foodText} Twin`,
+          name: `Air-Fried Protein ${foodText.charAt(0).toUpperCase()}${foodText.slice(1)} Twin`,
           nutrition: { calories: 390, protein_g: 42, carbs_g: 28, fat_g: 14, fiber_g: 8, health_score: 89 },
           taste_profile: { sweetness: 30, savoriness: 92, crunchiness: 80, creaminess: 68, spiciness: 20 },
           substitutions: [
