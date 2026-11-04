@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - SECRET_KEY=craveswap_super_secret_jwt_key_2026_change_in_production
+      - DATABASE_URL=sqlite:///./craveswap.db
+      - OPENAI_API_KEY=${OPENAI_API_KEY:-}
+    volumes:
+      - ./backend/craveswap.db:/app/craveswap.db
+    restart: always
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    restart: always
